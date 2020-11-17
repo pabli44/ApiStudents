@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiStudents.DAL;
 using ApiStudents.Model;
+using AutoMapper;
 
 namespace ApiStudents.Controller
 {
@@ -15,10 +16,12 @@ namespace ApiStudents.Controller
     public class StudentsController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
+        private readonly IMapper _mapper;
 
-        public StudentsController(ApplicationDBContext context)
+        public StudentsController(ApplicationDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Students
