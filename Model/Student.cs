@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace ApiStudents.Model
 {
     [Table("Student")]
-    public class Students
+    public class Student
     {
         [Column("Id")]
         [Key]
         [Required]
-        public long idStudent { get; set; }
+        public long studentId { get; set; }
 
         [Column("Username")]
         [Required]

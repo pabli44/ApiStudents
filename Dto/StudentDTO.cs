@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ApiStudents.Dto
 {
-    public class StudentsDTO
+    public class StudentDTO
     {
         public long idStudent { get; set; }
         public string userName { get; set; }

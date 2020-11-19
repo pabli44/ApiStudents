@@ -28,6 +28,9 @@ namespace ApiStudents
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+                
             var mapperConfig = new MapperConfiguration(mc => {
                 mc.AddProfile(new MappingProfile());
             });
@@ -47,12 +50,11 @@ namespace ApiStudents
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
+            app.UseCors("EnableCORS");
 
             app.UseEndpoints(endpoints =>
             {

@@ -26,14 +26,14 @@ namespace ApiStudents.Controller
 
         // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Students>>> GetStudent()
+        public async Task<ActionResult<IEnumerable<Student>>> GetStudent()
         {
             return await _context.Student.ToListAsync();
         }
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Students>> GetStudents(long id)
+        public async Task<ActionResult<Student>> GetStudents(long id)
         {
             var students = await _context.Student.FindAsync(id);
 
@@ -49,14 +49,14 @@ namespace ApiStudents.Controller
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudents(long id, Students students)
+        public async Task<IActionResult> PutStudents(long id, Student student)
         {
-            if (id != students.idStudent)
+            if (id != student.studentId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(students).State = EntityState.Modified;
+            _context.Entry(student).State = EntityState.Modified;
 
             try
             {
@@ -81,17 +81,17 @@ namespace ApiStudents.Controller
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Students>> PostStudents(Students students)
+        public async Task<ActionResult<Student>> PostStudents(Student students)
         {
             _context.Student.Add(students);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStudents", new { id = students.idStudent }, students);
+            return CreatedAtAction("GetStudents", new { id = students.studentId }, students);
         }
 
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Students>> DeleteStudents(long id)
+        public async Task<ActionResult<Student>> DeleteStudents(long id)
         {
             var students = await _context.Student.FindAsync(id);
             if (students == null)
@@ -107,7 +107,7 @@ namespace ApiStudents.Controller
 
         private bool StudentsExists(long id)
         {
-            return _context.Student.Any(e => e.idStudent == id);
+            return _context.Student.Any(e => e.studentId == id);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace ApiStudents
     {
         public MappingProfile()
         {
-            CreateMap<Students, StudentsDTO>();
-            CreateMap<StudentsDTO, Students>();
+            CreateMap<Student, StudentDTO>();
+            CreateMap<StudentDTO, Student>();
         }
     }
 }
